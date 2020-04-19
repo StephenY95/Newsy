@@ -1,11 +1,19 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonTabs } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import {
+  newspaperOutline,
+  searchOutline,
+  personCircleOutline,
+  createOutline,
+  trendingUpOutline
+} from "ionicons/icons"
 import News from './pages/Tabs/News';
 import Trending from './pages/Tabs/Trending';
 import Search from './pages/Tabs/Search';
 import Submit from './pages/Tabs/Submit';
+import Profile from './pages/Tabs/Profile';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -43,8 +51,36 @@ const App = () => (
           <Route component={() => <Redirect to="/news" />} />
 
         </IonRouterOutlet>
-      </IonTabs>
 
+        <IonTabBar slot="bottom">
+
+          <IonTabButton tab="news" href="/news">
+            <IonIcon icon={newspaperOutline} />
+            <IonLabel>Newsy</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="trending" href="/trending">
+            <IonIcon icon={trendingUpOutline} />
+            <IonLabel>Trending</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="submit" href="/submit">
+            <IonIcon icon={createOutline} />
+            <IonLabel>Submit</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="search" href="/search">
+            <IonIcon icon={searchOutline} />
+            <IonLabel>Search</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="profile" href="/profile">
+            <IonIcon icon={personCircleOutline} />
+            <IonLabel>Profile</IonLabel>
+          </IonTabButton>
+
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
