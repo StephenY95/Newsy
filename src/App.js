@@ -1,8 +1,11 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import News from './pages/Tabs/News';
+import Trending from './pages/Tabs/Trending';
+import Search from './pages/Tabs/Search';
+import Submit from './pages/Tabs/Submit';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,13 +26,25 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
+const App = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route
+            path="/"
+            render={() => <Redirect to="/news" />}
+            exact={true}
+          />
+          <Route path="/news" component={News} />
+          <Route path="/trending" component={Trending} />
+          <Route path="/search" component={Search} />
+          <Route path="/profile" component={Profile} />
+          <Route component={() => <Redirect to="/news" />} />
+
+        </IonRouterOutlet>
+      </IonTabs>
+
     </IonReactRouter>
   </IonApp>
 );
