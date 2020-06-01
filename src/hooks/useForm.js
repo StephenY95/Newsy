@@ -22,6 +22,7 @@ function useForm(initialState, validate, action) {
                 
             }
         }
+    // eslint-disable-next-line
     }, [errors]);
 
     function handleChange(event) {
