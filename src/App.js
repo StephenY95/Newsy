@@ -19,6 +19,7 @@ import Signup from './pages/Auth/Signup';
 import Login from './pages/Auth/Login';
 import Forgot from './pages/Auth/Forgot';
 import useAuth from './hooks/useAuth'
+import Link from './pages/Link'
 import UserContext from './contexts/UserContext'
 
 /* Core CSS required for Ionic components to work properly */
@@ -62,6 +63,7 @@ const App = () => {
           <Route path="/register" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/forgot" component={Forgot} />
+          <Route path="/link/:linkId" component={Link}/>
           <Route component={() => <Redirect to="/news" />} />
 
         </IonRouterOutlet>
